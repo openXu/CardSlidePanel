@@ -24,7 +24,6 @@ public class ZhongbaiView extends View {
     private int r0 = 10;
     private int r1 = 20;
 
-
     private Point POINT_YUANXIN;
     private Point POINT_WAIMIAN;
 

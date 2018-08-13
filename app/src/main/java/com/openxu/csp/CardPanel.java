@@ -1,6 +1,7 @@
 package com.openxu.csp;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.ViewDragHelper;
 import android.util.AttributeSet;
@@ -34,7 +35,8 @@ public class CardPanel extends ViewGroup {
 	}
 	public CardPanel(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
-		
+
+		setBackgroundColor(Color.GRAY);
 		dragHelper = ViewDragHelper.create(this, 1.0f, new DragCallBack());
 		
 	}
@@ -121,7 +123,7 @@ public class CardPanel extends ViewGroup {
         
 	}
 	
-	private static final float MAX_DIS = 400.0f;
+	private static final float MAX_DIS = 100.0f;
 	/**
 	 * 根据第一个拖动控件的位移联动
 	 */
@@ -130,7 +132,7 @@ public class CardPanel extends ViewGroup {
 		float rate1 = distance / MAX_DIS;
 		MyUtil.LOG_E(TAG, "联动比例："+rate1);
 		float rate2 = rate1 - 0.2f;
-		
+		((CardItemView)changedView).startAnim(60);
 		if(rate1>1){
 			rate1 = 1;
 		}
@@ -141,7 +143,6 @@ public class CardPanel extends ViewGroup {
 		}
 		adjustLinageViewItem(1, rate1);
 		adjustLinageViewItem(2, rate2);
-		
 	}
 	
 	private void adjustLinageViewItem(int index, float rate){
